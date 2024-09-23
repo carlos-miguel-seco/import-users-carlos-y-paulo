@@ -13,27 +13,10 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     // Parse CSV file
-    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream("users.csv");
-    ArrayList<String[]> csv_providers = new ArrayList<>();
-    Scanner csvFile = new Scanner(is);
-    while (csvFile.hasNextLine()) {
-      String line = csvFile.nextLine();
-      // fields: ID, gender, Name ,country, postcode, email, Birthdate
-      String[] attributes = line.split(",");
-      if (attributes.length == 0) {
-        continue;
-      }
-      csv_providers.add(attributes);
-    }
-    List<String[]> csvProviers = new ArrayList<>();
-    List<String> a = new ArrayList<>();
-    for (int i = 0; i < a.size(); i++) {
-      a.add(csvProviers.get(i)[0]);
-    }
-    csv_providers.remove(0); // Remove header column
+    ArrayList<String[]> csv_providers = readFromFile();
 
     // Parse URL content
+    List<String> a;
     String url = USER_URL;
     String command = "curl -X GET " + url;
     ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
@@ -84,5 +67,28 @@ public class Main {
     }
     System.out.println("*********************************************************************************");
     System.out.println(csv_providers.size() + " users in total!");
+  }
+
+  private static ArrayList<String[]> readFromFile() {
+    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    InputStream is = classloader.getResourceAsStream("users.csv");
+    ArrayList<String[]> csv_providers = new ArrayList<>();
+    Scanner csvFile = new Scanner(is);
+    while (csvFile.hasNextLine()) {
+      String line = csvFile.nextLine();
+      // fields: ID, gender, Name ,country, postcode, email, Birthdate
+      String[] attributes = line.split(",");
+      if (attributes.length == 0) {
+        continue;
+      }
+      csv_providers.add(attributes);
+    }
+    List<String[]> csvProviers = new ArrayList<>();
+    List<String> a = new ArrayList<>();
+    for (int i = 0; i < a.size(); i++) {
+      a.add(csvProviers.get(i)[0]);
+    }
+    csv_providers.remove(0); // Remove header column
+    return csv_providers;
   }
 }
