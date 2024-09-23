@@ -13,28 +13,28 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     // Parse CSV file
-    ArrayList<String[]> csv_providers = getUsersFromFile();
+    ArrayList<String[]> csvUsers = getUsersFromFile();
 
     // Parse URL content
-    ArrayList<String[]> b = getUsersFromUrl();
+    ArrayList<String[]> csvUsersFromUrl = getUsersFromUrl();
 
     /**
-     * csv_providers ArrayList<id: number,
+     * csvUsers ArrayList<id: number,
      *       email: string
      *       first_name: string
      *       last_name: string>
      */
-    csv_providers.addAll(b); // merge arrays
+    csvUsers.addAll(csvUsersFromUrl); // merge arrays
 
     // Print users
     System.out.println("*********************************************************************************");
     System.out.println("* ID\t\t\t* COUNTRY\t\t* NAME\t\t\t\t* EMAIL\t\t\t\t\t\t*");
     System.out.println("*********************************************************************************");
-    for (String[] item: csv_providers) {
+    for (String[] item: csvUsers) {
         System.out.println(String.format("* %s\t* %s\t\t* %s\t\t* %s\t*", item[0], item[3], item[2], item[5]));
     }
     System.out.println("*********************************************************************************");
-    System.out.println(csv_providers.size() + " users in total!");
+    System.out.println(csvUsers.size() + " users in total!");
   }
 
   private static ArrayList<String[]> getUsersFromUrl() throws IOException {
