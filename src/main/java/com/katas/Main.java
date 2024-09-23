@@ -27,14 +27,18 @@ public class Main {
     csvUsers.addAll(csvUsersFromUrl); // merge arrays
 
     // Print users
-    System.out.println("*********************************************************************************");
-    System.out.println("* ID\t\t\t* COUNTRY\t\t* NAME\t\t\t\t* EMAIL\t\t\t\t\t\t*");
-    System.out.println("*********************************************************************************");
+    printInTerminal("*********************************************************************************");
+    printInTerminal("* ID\t\t\t* COUNTRY\t\t* NAME\t\t\t\t* EMAIL\t\t\t\t\t\t*");
+    printInTerminal("*********************************************************************************");
     for (String[] item: csvUsers) {
-        System.out.println(String.format("* %s\t* %s\t\t* %s\t\t* %s\t*", item[0], item[3], item[2], item[5]));
+      printInTerminal(String.format("* %s\t* %s\t\t* %s\t\t* %s\t*", item[0], item[3], item[2], item[5]));
     }
-    System.out.println("*********************************************************************************");
-    System.out.println(csvUsers.size() + " users in total!");
+    printInTerminal("*********************************************************************************");
+    printInTerminal(csvUsers.size() + " users in total!");
+  }
+
+  private static void printInTerminal(String text) {
+    System.out.println(text);
   }
 
   private static ArrayList<String[]> getUsersFromUrl() throws IOException {
