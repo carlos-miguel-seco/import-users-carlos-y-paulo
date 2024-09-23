@@ -12,6 +12,11 @@ public class Main {
   private static final String USER_URL = "https://randomuser.me/api/?inc=gender,name,email,location&results=5&seed=a9b25cd955e2037h";
 
   public static void main(String[] args) throws Exception {
+    new InputUsersApp();
+    run();
+  }
+
+  private static void run() throws IOException {
     // Parse CSV file
     ArrayList<String[]> csvUsers = getUsersFromFile();
 
