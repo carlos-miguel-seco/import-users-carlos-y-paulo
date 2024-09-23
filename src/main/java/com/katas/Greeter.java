@@ -1,4 +1,4 @@
-package org.helloworld;
+package com.katas;
 
 public class Greeter {
     public String greet() {

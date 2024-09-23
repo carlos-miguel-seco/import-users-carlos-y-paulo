@@ -1,4 +1,4 @@
-package org.helloworld;
+package com.katas;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
