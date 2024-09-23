@@ -13,7 +13,7 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     // Parse CSV file
-    ArrayList<String[]> csv_providers = readFromFile();
+    ArrayList<String[]> csv_providers = getUsersFromFile();
 
     // Parse URL content
     ArrayList<String[]> b = getUsersFromUrl();
@@ -74,7 +74,7 @@ public class Main {
     return b;
   }
 
-  private static ArrayList<String[]> readFromFile() {
+  private static ArrayList<String[]> getUsersFromFile() {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("users.csv");
     ArrayList<String[]> csv_providers = new ArrayList<>();
