@@ -11,7 +11,7 @@ import java.util.*;
 public class InputUsersApp {
     private static final String USER_URL = "https://randomuser.me/api/?inc=gender,name,email,location&results=5&seed=a9b25cd955e2037h";
 
-    void run() throws IOException {
+    public void run() throws IOException {
       // Parse CSV file
       ArrayList<String[]> csvUsers = getUsersFromFile();
 
@@ -37,11 +37,11 @@ public class InputUsersApp {
       printInTerminal(csvUsers.size() + " users in total!");
     }
 
-    private void printInTerminal(String text) {
+    protected void printInTerminal(String text) {
       System.out.println(text);
     }
 
-    private ArrayList<String[]> getUsersFromUrl() throws IOException {
+    protected ArrayList<String[]> getUsersFromUrl() throws IOException {
       List<String> a;
       String url = USER_URL;
       String command = "curl -X GET " + url;
@@ -78,7 +78,7 @@ public class InputUsersApp {
       return b;
     }
 
-    private ArrayList<String[]> getUsersFromFile() {
+    protected ArrayList<String[]> getUsersFromFile() {
       ClassLoader classloader = Thread.currentThread().getContextClassLoader();
       InputStream is = classloader.getResourceAsStream("users.csv");
       ArrayList<String[]> csv_providers = new ArrayList<>();
